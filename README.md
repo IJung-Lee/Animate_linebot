@@ -1,2 +1,2 @@
-# Animate_linebot
+# Animation_linebot
 The project for Linebot.
