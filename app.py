@@ -15,8 +15,8 @@ import Ani_info
 
 app = Flask(__name__)
 
-line_bot_api = LineBotApi('uEdSgY+x4jNXP8iFWe/C962+HRcEiSD7s0jFi2N5USMMh07GRjvcECxsp/LmKwNMVFm+aZUxwaw5w1zMuKrBnrwpUji3/e7YRDECkdddIgFnif9PvfYt6to6Ad3ipZ+3dEM/HI65Lh0yexAEq///PwdB04t89/1O/w1cDnyilFU=')
-handler = WebhookHandler('fedc0bdccd7ad95334afe908aab82c79')
+line_bot_api = LineBotApi('YOUR_CHANNEL_ACCESS_TOKEN')
+handler = WebhookHandler('YOUR_CHANNEL_SECRET')
 
 
 # 監聽所有來自 /callback 的 Post Request
