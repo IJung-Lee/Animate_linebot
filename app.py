@@ -18,43 +18,30 @@ from Msg_Template import category_menu
 app = Flask(__name__)
 
 
-line_bot_api = LineBotApi(os.environ.get("CHANNEL_ACCESS_TOKEN"))
-handler = WebhookHandler(os.environ.get("CHANNEL_SECRET"))
-# line_bot_api = LineBotApi(os.environ['CHANNEL_ACCESS_TOKEN'])
-# handler = WebhookHandler(os.environ['CHANNEL_SECRET'])
+line_bot_api = LineBotApi(os.environ['CHANNEL_ACCESS_TOKEN'])
+handler = WebhookHandler(os.environ['CHANNEL_SECRET'])
 
-@app.route("/", methods=["GET", "POST"])
-def callback():
+my_user_id = 'U93b7b4f17b6cf1f0ac66d53341b493e2'
+line_bot_api.push_message(my_user_id, TextSendMessage(text="start"))
 
-    if request.method == "GET":
-        return "Hello Heroku"
-    if request.method == "POST":
-        signature = request.headers["X-Line-Signature"]
-        body = request.get_data(as_text=True)
-
-        try:
-            handler.handle(body, signature)
-        except InvalidSignatureError:
-            abort(400)
-
-        return "OK"
 # 監聽所有來自 /callback 的 Post Request
-# @app.route("/callback", methods=['POST'])
-# def callback():
-#     # get X-Line-Signature header values
-#     signature = request.headers['X-Line-Signature']
+@app.route("/callback", methods=['POST'])
+def callback():
+    # get X-Line-Signature header value
+    signature = request.headers['X-Line-Signature']
 
-#     # get request body as text
-#     body = request.get_data(as_text=True)
-#     app.logger.info("Request body: " + body)
+    # get request body as text
+    body = request.get_data(as_text=True)
+    app.logger.info("Request body: " + body)
 
-#     # handle webhook body
-#     try:
-#         handler.handle(body, signature)
-#     except InvalidSignatureError:
-#         abort(400)
+    # handle webhook body
+    try:
+        handler.handle(body, signature)
+    except InvalidSignatureError:
+        print("Invalid signature. Please check your channel access token/channel secret.")
+        abort(400)
 
-#     return 'OK'
+    return 'OK'
 
 
 # 處理訊息
