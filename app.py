@@ -2,7 +2,7 @@ import os
 import re
 from datetime import datetime
 
-from Msg_template import Msg_Ani
+# from Msg_template import Msg_Ani
 from Msg_template import Msg_Template
 
 from flask import Flask, abort, request
