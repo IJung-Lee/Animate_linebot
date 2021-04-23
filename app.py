@@ -2,7 +2,7 @@ import os
 import re
 from datetime import datetime
 
-from Msg_template import Ani_info
+# from Msg_template import Ani_info
 # from Msg_template import Msg_test
 from Msg_template import Msg_Template
 
@@ -45,8 +45,8 @@ def handle_message(event):
 
     #動畫
     if re.match("#", msg):
-        search_result = Ani_info.ani_search(msg[1:])
-        line_bot_api.push_message(uid, TextSendMessage(str(search_result)))
+        # search_result = Ani_info.ani_search(msg[1:])
+        line_bot_api.push_message(uid, TextSendMessage(msg[1:]))
         #if len(search_result) > 1:
          #   line_bot_api.push_message(uid, TextSendMessage(strsearch_result))
         #elif len(search_result) == 1:
