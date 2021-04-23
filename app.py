@@ -1,4 +1,4 @@
-import re
+import re, os
 # from pymongo import MongoClient
 # import pymongo
 from flask import Flask, request, abort
@@ -15,9 +15,11 @@ import Ani_info
 
 app = Flask(__name__)
 
-line_bot_api = LineBotApi('YOUR_CHANNEL_ACCESS_TOKEN')
-handler = WebhookHandler('YOUR_CHANNEL_SECRET')
+# line_bot_api = LineBotApi('YOUR_CHANNEL_ACCESS_TOKEN')
+# handler = WebhookHandler('YOUR_CHANNEL_SECRET')
 
+line_bot_api = LineBotApi(os.environ.get("CHANNEL_ACCESS_TOKEN"))
+handler = WebhookHandler(os.environ.get("CHANNEL_SECRET"))
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
@@ -46,17 +48,17 @@ def handle_message(event):
     profile = line_bot_api.get_profile(event.source.user_id) #獲取使用者資訊
     uid = profile.user_id # 使用者ID
 
-
-
     #星期
     if re.match("番劇時間", msg):
-        reply = Msg_Template.week_menu()
-        line_bot_api.reply_message(event.reply_token, reply)
-    
+        content = questionnaire.Q1_menu()
+        line_bot_api.push_message(uid, content)
+        return 0
+
     #類別
     elif re.match("番劇類別", msg):
-        reply = Msg_Template.category_menu()
-        line_bot_api.reply_message(event.reply_token, reply)
+        content = questionnaire.Q1_menu()
+        line_bot_api.push_message(uid, content)
+        return 0
 
 
 if __name__ == "__main__":
