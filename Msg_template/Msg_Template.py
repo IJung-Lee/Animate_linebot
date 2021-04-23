@@ -1,5 +1,22 @@
 from linebot.models import *
 
+def test():
+    flex_message = FlexSendMessage(
+        alt_text='Week Menu',
+        contents={
+            'type': 'bubble',
+            'direction': 'ltr',
+            'hero': {
+                'type': 'image',
+                'url': 'https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png',
+                'size': 'full',
+                'aspectRatio': '5:2',
+                'aspectMode': 'cover',
+            }
+        }
+    )
+    return flex_message
+
 ###########################
 # 星期選單###圖片須改
 def week_menu(): 

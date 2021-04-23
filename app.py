@@ -2,7 +2,7 @@ import os
 import re
 from datetime import datetime
 
-# from Msg_template import Msg_Template
+from Msg_template import Msg_Template
 
 from flask import Flask, abort, request
 from linebot import LineBotApi, WebhookHandler
@@ -40,25 +40,11 @@ def handle_message(event):
     msg = str(event.message.text).upper().strip() # 使用者輸入的內容
     profile = line_bot_api.get_profile(event.source.user_id)
     uid = profile.user_id # 發訊者ID
-    flex_message = FlexSendMessage(
-        alt_text='hello',
-        contents={
-            'type': 'bubble',
-            'direction': 'ltr',
-            'hero': {
-                'type': 'image',
-                'url': 'https://example.com/cafe.jpg',
-                'size': 'full',
-                'aspectRatio': '20:13',
-                'aspectMode': 'cover',
-                'action': { 'type': 'uri', 'uri': 'http://example.com', 'label': 'label' }
-            }
-        }
-    )
 
     #時間
     if re.match("時間", msg):
-        #flex_message = week_menu()
+        line_bot_api.push_message(uid, TextSendMessage('時間測試'))
+        flex_message = Msg_Template.test()
         line_bot_api.push_message(uid, flex_message)
 
     #類別
