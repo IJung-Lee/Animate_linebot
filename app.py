@@ -18,28 +18,43 @@ from Msg_Template import category_menu
 app = Flask(__name__)
 
 
-# line_bot_api = LineBotApi(os.environ("CHANNEL_ACCESS_TOKEN"))
-# handler = WebhookHandler(os.environ("CHANNEL_SECRET"))
-line_bot_api = LineBotApi(os.environ['CHANNEL_ACCESS_TOKEN'])
-handler = WebhookHandler(os.environ['CHANNEL_SECRET'])
+line_bot_api = LineBotApi(os.environ.get("CHANNEL_ACCESS_TOKEN"))
+handler = WebhookHandler(os.environ.get("CHANNEL_SECRET"))
+# line_bot_api = LineBotApi(os.environ['CHANNEL_ACCESS_TOKEN'])
+# handler = WebhookHandler(os.environ['CHANNEL_SECRET'])
 
-# 監聽所有來自 /callback 的 Post Request
-@app.route("/callback", methods=['POST'])
+@app.route("/", methods=["GET", "POST"])
 def callback():
-    # get X-Line-Signature header values
-    signature = request.headers['X-Line-Signature']
 
-    # get request body as text
-    body = request.get_data(as_text=True)
-    app.logger.info("Request body: " + body)
+    if request.method == "GET":
+        return "Hello Heroku"
+    if request.method == "POST":
+        signature = request.headers["X-Line-Signature"]
+        body = request.get_data(as_text=True)
 
-    # handle webhook body
-    try:
-        handler.handle(body, signature)
-    except InvalidSignatureError:
-        abort(400)
+        try:
+            handler.handle(body, signature)
+        except InvalidSignatureError:
+            abort(400)
 
-    return 'OK'
+        return "OK"
+# 監聽所有來自 /callback 的 Post Request
+# @app.route("/callback", methods=['POST'])
+# def callback():
+#     # get X-Line-Signature header values
+#     signature = request.headers['X-Line-Signature']
+
+#     # get request body as text
+#     body = request.get_data(as_text=True)
+#     app.logger.info("Request body: " + body)
+
+#     # handle webhook body
+#     try:
+#         handler.handle(body, signature)
+#     except InvalidSignatureError:
+#         abort(400)
+
+#     return 'OK'
 
 
 # 處理訊息
@@ -67,6 +82,4 @@ def handle_message(event):
 
 
 if __name__ == "__main__":
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
-    # app.run(debug=True)
+    app.run(debug=True)
