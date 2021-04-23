@@ -1,4 +1,4 @@
-from linebot.models import *
+# from linebot.models import *
 
 import Ani_info
 
@@ -120,7 +120,7 @@ def ani_bubble(name, intro, image, tag, tag_color):
                         "action": {
                         "type": "message",
                         "label": "收藏",
-                        "text": "收藏"
+                        "text": "收藏" + name
                         },
                         "style": "primary",
                         "color": "#81C7D4",
