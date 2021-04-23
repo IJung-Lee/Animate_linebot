@@ -49,7 +49,7 @@ def handle_message(event):
 
     #類別
     elif re.match("類別", msg):
-        #flex_message = Msg_Template.category_menu()
+        flex_message = Msg_Template.category_menu()
         line_bot_api.push_message(uid, flex_message)
     else:
         line_bot_api.push_message(uid, TextSendMessage('很抱歉我們無法回應該訊息 \n\n輸入《時間》找尋每日番劇！ \n輸入《類別》查找各類番劇！'))

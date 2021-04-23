@@ -1,37 +1,6 @@
 from linebot.models import *
 
-def week_test():
-    flex_message = FlexSendMessage(
-        alt_text='Week Menu test',
-        contents={
-            "type": "bubble",
-            "hero": {
-                "type": "image",
-                "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
-                "size": "full",
-                "aspectRatio": "5:2",
-                "aspectMode": "cover"
-            },
-            "body": {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                {
-                    "type": "text",
-                    "text": "番劇時間",
-                    "weight": "bold",
-                    "size": "xl",
-                    "align": "center"
-                }
-                ],
-                "paddingAll": "md"
-            }
-        }
-    )
-    return flex_message
-
-###########################
-# 星期選單###圖片須改
+# 星期選單
 def week_menu(): 
     flex_message = FlexSendMessage(
         alt_text = "Week Menu",
@@ -39,7 +8,7 @@ def week_menu():
             "type": "bubble",
             "hero": {
                 "type": "image",
-                "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
+                "url": "https://i.imgur.com/3nsWb7x.png",
                 "size": "full",
                 "aspectRatio": "5:2",
                 "aspectMode": "cover"
@@ -160,133 +129,130 @@ def category_menu():
     flex_message = FlexSendMessage(
             alt_text = "Category Menu",
             contents = {
-                        "type": "bubble",
-                        "hero": {
-                            "type": "image",
-                            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png", 
-                            "size": "full",
-                            "aspectRatio": "5:2",
-                            "aspectMode": "cover"
-                        },
-                        "body": {
+                "type": "bubble",
+                "hero": {
+                    "type": "image",
+                    "url": "https://i.imgur.com/iETUnoU.png",
+                    "size": "full",
+                    "aspectRatio": "5:2",
+                    "aspectMode": "cover"
+                },
+                "body": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                    {
+                        "type": "text",
+                        "text": "番劇類別",
+                        "weight": "bold",
+                        "size": "xl",
+                        "align": "center"
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "spacing": "sm",
+                        "contents": [
+                        {
                             "type": "box",
-                            "layout": "vertical",
+                            "layout": "horizontal",
                             "contents": [
                             {
-                                "type": "text",
-                                "text": "番劇類別",
-                                "weight": "bold",
-                                "size": "xl",
-                                "align": "center"
+                                "type": "button",
+                                "action": {
+                                "type": "message",
+                                "label": "校園",
+                                "text": "校園番劇查詢"
+                                },
+                                "height": "sm",
+                                "style": "link"
+                            },
+                            {
+                                "type": "button",
+                                "action": {
+                                "type": "message",
+                                "label": "戀愛",
+                                "text": "戀愛番劇查詢"
+                                },
+                                "height": "sm",
+                                "style": "link"
+                            },
+                            {
+                                "type": "button",
+                                "action": {
+                                "type": "message",
+                                "label": "科幻",
+                                "text": "科幻番劇查詢"
+                                },
+                                "height": "sm",
+                                "style": "link"
+                            },
+                            {
+                                "type": "button",
+                                "action": {
+                                "type": "message",
+                                "label": "奇幻",
+                                "text": "奇幻番劇查詢"
+                                },
+                                "height": "sm",
+                                "style": "link"
                             }
                             ],
-                            "paddingAll": "md"
+                            "paddingAll": "none"
                         },
-                        "footer": {
+                        {
                             "type": "box",
-                            "layout": "vertical",
-                            "spacing": "sm",
+                            "layout": "horizontal",
                             "contents": [
                             {
-                                "type": "box",
-                                "layout": "horizontal",
-                                "contents": [
-                                {
-                                    "type": "button",
-                                    "action": {
-                                    "type": "message",
-                                    "label": "校園",
-                                    "text": "校園番劇查詢"
-                                    },
-                                    "height": "sm",
-                                    "style": "link"
+                                "type": "button",
+                                "action": {
+                                "type": "message",
+                                "label": "日常",
+                                "text": "日常番劇查詢"
                                 },
-                                {
-                                    "type": "button",
-                                    "action": {
-                                    "type": "message",
-                                    "label": "戀愛",
-                                    "text": "戀愛番劇查詢"
-                                    },
-                                    "height": "sm",
-                                    "style": "link"
-                                },
-                                {
-                                    "type": "button",
-                                    "action": {
-                                    "type": "message",
-                                    "label": "科幻",
-                                    "text": "科幻番劇查詢"
-                                    },
-                                    "height": "sm",
-                                    "style": "link"
-                                },
-                                {
-                                    "type": "button",
-                                    "action": {
-                                    "type": "message",
-                                    "label": "奇幻",
-                                    "text": "奇幻番劇查詢"
-                                    },
-                                    "height": "sm",
-                                    "style": "link"
-                                }
-                                ],
-                                "paddingAll": "none"
+                                "height": "sm",
+                                "style": "link"
                             },
                             {
-                                "type": "box",
-                                "layout": "horizontal",
-                                "contents": [
-                                {
-                                    "type": "button",
-                                    "action": {
-                                    "type": "message",
-                                    "label": "日常",
-                                    "text": "日常番劇查詢"
-                                    },
-                                    "height": "sm",
-                                    "style": "link"
+                                "type": "button",
+                                "action": {
+                                "type": "message",
+                                "label": "冒險",
+                                "text": "冒險番劇查詢"
                                 },
-                                {
-                                    "type": "button",
-                                    "action": {
-                                    "type": "message",
-                                    "label": "冒險",
-                                    "text": "冒險番劇查詢"
-                                    },
-                                    "height": "sm",
-                                    "style": "link"
-                                },
-                                {
-                                    "type": "button",
-                                    "action": {
-                                    "type": "message",
-                                    "label": "動作",
-                                    "text": "動作番劇查詢"
-                                    },
-                                    "height": "sm",
-                                    "style": "link"
-                                },
-                                {
-                                    "type": "button",
-                                    "action": {
-                                    "type": "message",
-                                    "label": "其他",
-                                    "text": "其他番劇查詢"
-                                    },
-                                    "height": "sm",
-                                    "style": "link"
-                                }
-                                ],
-                                "paddingAll": "none"
+                                "height": "sm",
+                                "style": "link"
                             },
                             {
-                                "type": "spacer"
+                                "type": "button",
+                                "action": {
+                                "type": "message",
+                                "label": "動作",
+                                "text": "動作番劇查詢"
+                                },
+                                "height": "sm",
+                                "style": "link"
+                            },
+                            {
+                                "type": "button",
+                                "action": {
+                                "type": "message",
+                                "label": "其他",
+                                "text": "其他番劇查詢"
+                                },
+                                "height": "sm",
+                                "style": "link"
                             }
                             ],
-                            "paddingAll": "xs"
+                            "paddingAll": "none"
                         }
+                        ],
+                        "paddingAll": "xs"
+                    }
+                    ],
+                    "paddingAll": "md"
+                }
             }
     )
     return flex_message
