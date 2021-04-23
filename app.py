@@ -35,134 +35,26 @@ def callback():
     return 'OK'
 
 
-flex_message = FlexSendMessage(
-        alt_text = "Week Menu",
-        contents = {
-            "type": "bubble",
-            "hero": {
-                "type": "image",
-                "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
-                "size": "full",
-                "aspectRatio": "5:2",
-                "aspectMode": "cover"
-            },
-            "body": {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                {
-                    "type": "text",
-                    "text": "番劇時間",
-                "weight": "bold",
-                    "size": "xl",
-                    "align": "center"
-                },
-                {
-                    "type": "box",
-                    "layout": "vertical",
-                    "spacing": "sm",
-                    "contents": [
-                    {
-                        "type": "box",
-                        "layout": "horizontal",
-                        "contents": [
-                        {
-                            "type": "button",
-                            "action": {
-                            "type": "message",
-                            "label": "週一",
-                            "text": "星期一番劇查詢"
-                            },
-                            "height": "sm",
-                            "style": "link"
-                        },
-                        {
-                            "type": "button",
-                            "action": {
-                            "type": "message",
-                            "label": "週二",
-                            "text": "星期二番劇查詢"
-                            },
-                            "height": "sm",
-                            "style": "link"
-                        },
-                        {
-                            "type": "button",
-                            "action": {
-                            "type": "message",
-                            "label": "週三",
-                            "text": "星期三番劇查詢"
-                            },
-                            "height": "sm",
-                            "style": "link"
-                        }
-                        ],
-                        "paddingAll": "none"
-                    },
-                    {
-                        "type": "box",
-                        "layout": "horizontal",
-                        "contents": [
-                        {
-                            "type": "button",
-                            "action": {
-                            "type": "message",
-                            "label": "週四",
-                            "text": "星期四番劇查詢"
-                            },
-                            "height": "sm",
-                            "style": "link"
-                        },
-                        {
-                            "type": "button",
-                            "action": {
-                            "type": "message",
-                            "label": "週五",
-                            "text": "星期五番劇查詢"
-                            },
-                            "height": "sm",
-                            "style": "link"
-                        },
-                        {
-                            "type": "button",
-                            "action": {
-                            "type": "message",
-                            "label": "週六",
-                            "text": "星期六番劇查詢"
-                            },
-                            "height": "sm",
-                            "style": "link"
-                        },
-                        {
-                            "type": "button",
-                            "action": {
-                            "type": "message",
-                            "label": "週日",
-                            "text": "星期日番劇查詢"
-                            },
-                            "height": "sm",
-                            "style": "link"
-                        }
-                        ],
-                        "paddingAll": "none"
-                    },
-                    {
-                        "type": "spacer"
-                    }
-                    ],
-                    "paddingAll": "xs"
-                }
-                ],
-                "paddingAll": "md"
-            }
-        }
-)
-
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = str(event.message.text).upper().strip() # 使用者輸入的內容
     profile = line_bot_api.get_profile(event.source.user_id)
     uid = profile.user_id # 發訊者ID
+    flex_message = FlexSendMessage(
+        alt_text='hello',
+        contents={
+            'type': 'bubble',
+            'direction': 'ltr',
+            'hero': {
+                'type': 'image',
+                'url': 'https://example.com/cafe.jpg',
+                'size': 'full',
+                'aspectRatio': '20:13',
+                'aspectMode': 'cover',
+                'action': { 'type': 'uri', 'uri': 'http://example.com', 'label': 'label' }
+            }
+        }
+    )
 
     #時間
     if re.match("時間", msg):
