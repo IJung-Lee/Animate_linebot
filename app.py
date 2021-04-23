@@ -1,4 +1,5 @@
 import os
+import re
 from datetime import datetime
 
 from flask import Flask, abort, request
@@ -34,8 +35,16 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    get_message = event.message.text
+    msg = str(event.message.text).upper().strip() # 使用者輸入的內容
+    profile = line_bot_api.get_profile(event.source.user_id)
+    uid = profile.user_id # 發訊者ID
 
-    # Send To Line
-    reply = TextSendMessage(text=f"{get_message}")
-    line_bot_api.reply_message(event.reply_token, reply)
+    if re.match("哈哈", msg):
+        line_bot_api.push_message(uid, TextSendMessage('啊這'))
+    else:
+        line_bot_api.push_message(uid, TextSendMessage('我不懂你在說啥'))
+
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
