@@ -51,7 +51,7 @@ def handle_message(event):
             content = Msg_test.ani_name_select(search_result)
             line_bot_api.push_message(uid, content)
         elif len(search_result) == 1:
-            content = Msg_test.ani_information(search_result[0])
+            content = Msg_test.ani_information2(search_result[0])
             # line_bot_api.push_message(uid, TextSendMessage(search_result[0]))
             line_bot_api.push_message(uid, content)
         else:
