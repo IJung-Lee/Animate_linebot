@@ -43,20 +43,7 @@ def handle_message(event):
     uid = profile.user_id # 發訊者ID
 
     #動畫
-    if re.match("#", msg):
-        name = msg[1:]
-        df = pd.read_csv('Ani_data.csv')
-        data = df[df["番名"].str.contains(name)]
-        if len(data) > 1:
-            content = Msg_Ani.ani_information(list(data["番名"].values))
-            line_bot_api.push_message(uid, content)
-        elif len(data) == 1:
-            content = Msg_Ani.ani_name_select(data["番名"].values[0], False)
-            line_bot_api.push_message(uid, content)
-        else:
-            line_bot_api.push_message(uid, TextSendMessage('查無此動漫，請重新查詢。'))
-    #時間
-    elif re.match("時間", msg):
+    if re.match("時間", msg):
         flex_message = Msg_Template.week_menu()
         line_bot_api.push_message(uid, flex_message)
 
@@ -65,7 +52,7 @@ def handle_message(event):
     elif re.match("類別", msg):
         flex_message = Msg_Template.category_menu()
         line_bot_api.push_message(uid, flex_message)
-        
+
     else:
         line_bot_api.push_message(uid, TextSendMessage('很抱歉我們無法回應該訊息 \n\n輸入《時間》找尋每日番劇！ \n輸入《類別》查找各類番劇！'))
 
