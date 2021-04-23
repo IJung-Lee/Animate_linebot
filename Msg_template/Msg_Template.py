@@ -51,7 +51,7 @@ def week_menu():
                 {
                     "type": "text",
                     "text": "番劇時間",
-                "weight": "bold",
+                    "weight": "bold",
                     "size": "xl",
                     "align": "center"
                 },
@@ -143,9 +143,6 @@ def week_menu():
                         }
                         ],
                         "paddingAll": "none"
-                    },
-                    {
-                        "type": "spacer"
                     }
                     ],
                     "paddingAll": "xs"
