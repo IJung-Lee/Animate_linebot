@@ -9,7 +9,7 @@ def week_menu():
                         "type": "bubble",
                         "hero": {
                             "type": "image",
-                            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",  ##待修改圖片
+                            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
                             "size": "full",
                             "aspectRatio": "5:2",
                             "aspectMode": "cover"
@@ -136,7 +136,7 @@ def category_menu():
                         "type": "bubble",
                         "hero": {
                             "type": "image",
-                            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",  #待修改圖片
+                            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png", 
                             "size": "full",
                             "aspectRatio": "5:2",
                             "aspectMode": "cover"
