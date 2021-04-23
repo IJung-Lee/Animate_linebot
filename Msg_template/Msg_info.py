@@ -1,4 +1,5 @@
 from linebot.models import *
+import Ani_info
 
 def ani_bubble(name):
     Ani = {
@@ -99,7 +100,7 @@ def ani_bubble(name):
                     "action": {
                     "type": "message",
                     "label": "收藏",
-                    "text": "收藏"
+                    "text": "收藏"+name
                     },
                     "style": "primary",
                     "color": "#81C7D4",
