@@ -16,14 +16,9 @@ def get_tag_color(tag):
 
 
 ##搜索動畫
-def search_ani(ani_name):
+def ani_search(ani_name):
     data = df[df["番名"].str.contains(ani_name)]
-    if len(data) > 1:
-        ani = list(data["番名"].values)
-    elif len(data) == 1:
-        ani = data["番名"].values[0]
-    else:
-        ani = "None"
+    ani = list(data["番名"].values)
     return ani
 
 
