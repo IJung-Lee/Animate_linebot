@@ -44,7 +44,7 @@ def handle_message(event):
     #時間
     if re.match("時間", msg):
         line_bot_api.push_message(uid, TextSendMessage('時間測試'))
-        flex_message = Msg_Template.test()
+        flex_message = Msg_Template.week_test()
         line_bot_api.push_message(uid, flex_message)
 
     #類別

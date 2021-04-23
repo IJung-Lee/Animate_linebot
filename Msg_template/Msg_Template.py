@@ -1,17 +1,30 @@
 from linebot.models import *
 
-def test():
+def week_test():
     flex_message = FlexSendMessage(
         alt_text='Week Menu',
         contents={
-            'type': 'bubble',
-            'direction': 'ltr',
-            'hero': {
-                'type': 'image',
-                'url': 'https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png',
-                'size': 'full',
-                'aspectRatio': '5:2',
-                'aspectMode': 'cover',
+            "type": "bubble",
+            "hero": {
+                "type": "image",
+                "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
+                "size": "full",
+                "aspectRatio": "5:2",
+                "aspectMode": "cover"
+            },
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "text",
+                    "text": "番劇時間",
+                    "weight": "bold",
+                    "size": "xl",
+                    "align": "center"
+                }
+                ],
+                "paddingAll": "md"
             }
         }
     )
