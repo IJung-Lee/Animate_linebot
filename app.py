@@ -45,14 +45,13 @@ def handle_message(event):
 
     #動畫
     if re.match("#", msg):
-        # search_result = Ani_info.ani_search(msg[1:])
-        line_bot_api.push_message(uid, TextSendMessage(msg[1:]))
-        #if len(search_result) > 1:
-         #   line_bot_api.push_message(uid, TextSendMessage(strsearch_result))
-        #elif len(search_result) == 1:
-         #   line_bot_api.push_message(uid, TextSendMessage(search_result[0]))
-        #else:
-         #   line_bot_api.push_message(uid, TextSendMessage('查無此番劇，請重新搜尋。'))
+        search_result = Ani_info.ani_search(msg[1:])
+        if len(search_result) > 1:
+           line_bot_api.push_message(uid, TextSendMessage(str(search_result)))
+        elif len(search_result) == 1:
+           line_bot_api.push_message(uid, TextSendMessage(search_result[0]))
+        else:
+           line_bot_api.push_message(uid, TextSendMessage('查無此番劇，請重新搜尋。'))
     
     #時間
     elif re.match("時間", msg):
