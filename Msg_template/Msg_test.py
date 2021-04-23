@@ -23,7 +23,7 @@ def ani_name_select(AniName_list):
 
 def ani_information(AniName): 
     flex_message = FlexSendMessage(
-            alt_text = name + "資訊",
+            alt_text = AniName + "資訊",
             contents = {
                 "type": "bubble",
                 "size": "kilo",
@@ -78,12 +78,12 @@ def ani_information(AniName):
                         "text": "動漫",
                         "weight": "bold",
                         "size": "lg",
-                        "wrap": true
+                        "wrap": True
                     },
                     {
                         "type": "text",
                         "text": "簡介",
-                        "wrap": true,
+                        "wrap": True,
                         "margin": "md",
                         "size": "xs",
                         "color": "#666666"
