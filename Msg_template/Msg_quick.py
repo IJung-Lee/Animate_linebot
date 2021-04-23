@@ -1,6 +1,6 @@
 from linebot.models import *
 
-import Ani_info
+# import Ani_info
 
 ##動畫選擇 #quickly reply
 def ani_name_select(AniName_list):
