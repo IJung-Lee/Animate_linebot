@@ -1,4 +1,4 @@
-from linebot.models import FlexSendMessage
+from linebot.models import TextSendMessage, FlexSendMessage, QuickReplyButton, QuickReply, MessageAction
 
 import Ani_info.py
 
@@ -19,7 +19,7 @@ def get_link_box(web, url):
     return links
 
 ##收藏判斷  ###等mongodb.py完成後修改
-def ani_collect(collect, AniName):
+def ani_collect(collect , AniName):
     if collect == True:
         action = {
             "type": "message",
@@ -148,7 +148,7 @@ def ani_name_select(AniName_list):
 
 
 ##動畫資訊 #圖文選單
-def ani_information(AniName): 
+def ani_information(AniName, collect): 
     data = get_ani_data(AniName)
 
     name = data[0]
