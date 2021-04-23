@@ -21,7 +21,7 @@ def ani_name_select(AniName_list):
     )
     return text_message
 
-def ani_bubble(name, intro, image, tag, tag_color):
+def ani_bubble():
     Ani = {
             "type": "bubble",
             "size": "kilo",
@@ -35,7 +35,7 @@ def ani_bubble(name, intro, image, tag, tag_color):
                     "contents": [
                     {
                         "type": "image",
-                        "url": image,
+                        "url": "https://i.imgur.com/87Mhknm.png",
                         "size": "full",
                         "aspectRatio": "1.54:1",
                         "aspectMode": "cover"
@@ -46,14 +46,14 @@ def ani_bubble(name, intro, image, tag, tag_color):
                         "contents": [
                         {
                             "type": "text",
-                            "text": tag,
+                            "text": "漫畫改編",
                             "size": "xs",
                             "align": "center",
                             "gravity": "center",
                             "color": "#ffffff"
                         }
                         ],
-                        "backgroundColor": tag_color,
+                        "backgroundColor": "#ff334b",
                         "position": "absolute",
                         "offsetStart": "15px",
                         "offsetTop": "15px",
@@ -73,14 +73,14 @@ def ani_bubble(name, intro, image, tag, tag_color):
                 "contents": [
                 {
                     "type": "text",
-                    "text": name,
+                    "text": "動漫",
                     "weight": "bold",
                     "size": "lg",
                     "wrap": True
                 },
                 {
                     "type": "text",
-                    "text": intro,
+                    "text": "簡介",
                     "wrap": True,
                     "margin": "md",
                     "size": "xs",
@@ -120,7 +120,7 @@ def ani_bubble(name, intro, image, tag, tag_color):
                         "action": {
                         "type": "message",
                         "label": "收藏",
-                        "text": "收藏" + name
+                        "text": "收藏"
                         },
                         "style": "primary",
                         "color": "#81C7D4",
@@ -131,19 +131,20 @@ def ani_bubble(name, intro, image, tag, tag_color):
                 ],
                 "paddingAll": "15px"
             }
-        }
+    }
     return Ani
 
 ##動畫資訊 #圖文選單
 def ani_information(AniName): 
-    data = Ani_info.get_ani_data(AniName)
+    # data = Ani_info.get_ani_data(AniName)
 
-    intro = data[1]
-    image = data[2] 
-    tag =  data[3]
-    tag_color = data[4]
+    # intro = data[1]
+    # image = data[2] 
+    # tag =  data[3]
+    # tag_color = data[4]
     # links = get_link_box(data[5], data[6])
-    content = ani_bubble(AniName, intro, image, tag, tag_color)
+    # content = ani_bubble(AniName, intro, image, tag, tag_color)
+    content = ani_bubble()
     flex_message = FlexSendMessage(
             alt_text = AniName + "資訊",
             contents = content
