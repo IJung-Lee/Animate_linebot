@@ -8,7 +8,7 @@ def week_menu():
             "type": "bubble",
             "hero": {
                 "type": "image",
-                "url": "https://i.imgur.com/3nsWb7x.png",
+                "url": "https://i.imgur.com/1sKXwFc.png",
                 "size": "full",
                 "aspectRatio": "5:2",
                 "aspectMode": "cover"
