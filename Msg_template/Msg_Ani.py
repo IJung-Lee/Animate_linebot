@@ -1,6 +1,6 @@
-from linebot.models import TextSendMessage, FlexSendMessage, QuickReplyButton, QuickReply, MessageAction
+from linebot.models import *
 
-import Ani_info.py
+import Ani_info
 
 ##觀看網址button
 def get_link_box(web, url):
@@ -18,7 +18,7 @@ def get_link_box(web, url):
         links.append(link)
     return links
 
-##收藏判斷  ###等mongodb.py完成後修改
+##收藏判斷
 def ani_collect(collect , AniName):
     if collect == True:
         action = {
