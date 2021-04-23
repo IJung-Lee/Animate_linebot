@@ -3,6 +3,7 @@ import re
 from datetime import datetime
 
 from Msg_template import Ani_info
+from Msg_template import Msg_info
 from Msg_template import Msg_quick
 from Msg_template import Msg_Template
 
@@ -51,9 +52,9 @@ def handle_message(event):
             content = Msg_quick.ani_name_select(search_result)
             line_bot_api.push_message(uid, content)
         elif len(search_result) == 1:
-            line_bot_api.push_message(uid, TextSendMessage(search_result[0]))
-            # content = Msg_test.ani_information(search_result[0])
-            # line_bot_api.push_message(uid, content)
+            # line_bot_api.push_message(uid, TextSendMessage(search_result[0]))
+            content = Msg_info.ani_information(search_result[0])
+            line_bot_api.push_message(uid, content)
         else:
             line_bot_api.push_message(uid, TextSendMessage('查無此番劇，請重新搜尋。'))
     
