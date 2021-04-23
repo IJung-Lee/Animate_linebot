@@ -136,7 +136,7 @@ def ani_bubble(name, intro, image, tag, tag_color):
 
 ##動畫資訊 #圖文選單
 def ani_information(AniName): 
-    data = get_ani_data(AniName)
+    data = Ani_info.get_ani_data(AniName)
 
     intro = data[1]
     image = data[2] 
