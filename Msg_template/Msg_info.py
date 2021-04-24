@@ -1,6 +1,6 @@
 from linebot.models import *
 
-def ani_bubble(name):
+def ani_bubble(name, intro, image):
     Ani = {
         "type": "bubble",
         "size": "kilo",
@@ -14,7 +14,7 @@ def ani_bubble(name):
                 "contents": [
                 {
                     "type": "image",
-                    "url": "https://i.imgur.com/87Mhknm.png",
+                    "url": image,
                     "size": "full",
                     "aspectRatio": "1.54:1",
                     "aspectMode": "cover"
@@ -59,7 +59,7 @@ def ani_bubble(name):
             },
             {
                 "type": "text",
-                "text": "簡介",
+                "text": intro,
                 "wrap": True,
                 "margin": "md",
                 "size": "xs",
@@ -114,16 +114,16 @@ def ani_bubble(name):
     return Ani
 
 ##動畫資訊 #圖文選單
-def ani_information(AniName): 
+def ani_information(AniData): 
     # data = Ani_info.get_ani_data(AniName)
-
-    # intro = data[1]
-    # image = data[2] 
+    name = AniData[0]
+    intro = AniData[1]
+    image = AniData[2] 
     # tag =  data[3]
     # tag_color = data[4]
     # links = get_link_box(data[5], data[6])
-    # content = ani_bubble(AniName, intro, image, tag, tag_color)
-    content = ani_bubble(AniName)
+    content = ani_bubble(AniName, intro, image)
+    # content = ani_bubble(AniName)
     flex_message = FlexSendMessage(
             alt_text = AniName + "資訊",
             contents = content

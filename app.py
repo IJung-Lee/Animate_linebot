@@ -2,7 +2,7 @@ import os
 import re
 from datetime import datetime
 
-from Msg_template import Ani_info
+import Ani_info
 from Msg_template import Msg_info
 from Msg_template import Msg_quick
 from Msg_template import Msg_Template
