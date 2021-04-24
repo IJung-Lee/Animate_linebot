@@ -53,9 +53,8 @@ def handle_message(event):
             line_bot_api.push_message(uid, content)
         elif len(search_result) == 1:
             ani_data = Ani_info.get_ani_data(search_result[0])
-            line_bot_api.push_message(uid, TextSendMessage(str(ani_data)))
-            # content = Msg_info.ani_information(ani_data)
-            # line_bot_api.push_message(uid, content)
+            content = Msg_info.ani_information(ani_data)
+            line_bot_api.push_message(uid, content)
         else:
             line_bot_api.push_message(uid, TextSendMessage('查無此番劇，請重新搜尋。'))
     
