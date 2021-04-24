@@ -75,17 +75,17 @@ def handle_message(event):
         message = Msg_Template.category_menu()
         line_bot_api.push_message(uid, message)
 
-    elif re.match("校園", msg):
-        ani_data = Ani_info.get_category_data("校園")
-        line_bot_api.push_message(uid, TextSendMessage(str(ani_data)))
-        content = Msg_Ani.ani_category("校園", ani_data)
+    elif re.match(r'\s校園|戀愛|科幻|奇幻|日常|冒險|動作|其他', msg):
+        ani_data = Ani_info.get_category_data(msg[:2])
+        # line_bot_api.push_message(uid, TextSendMessage(str(ani_data)))
+        content = Msg_Ani.ani_category(msg[:2], ani_data)
         line_bot_api.push_message(uid, content)
 
-    elif re.match("戀愛", msg):
-        ani_data = Ani_info.get_category_data("戀愛")
-        line_bot_api.push_message(uid, TextSendMessage(str(ani_data)))
-        content = Msg_Ani.ani_category("戀愛", ani_data)
-        line_bot_api.push_message(uid, content)
+    # elif re.match("戀愛", msg):
+    #     ani_data = Ani_info.get_category_data("戀愛")
+    #     line_bot_api.push_message(uid, TextSendMessage(str(ani_data)))
+    #     content = Msg_Ani.ani_category("戀愛", ani_data)
+    #     line_bot_api.push_message(uid, content)
 
     # elif re.match("科幻番劇", msg):
     #     ani_data = Ani_info.get_category_data("科幻")
