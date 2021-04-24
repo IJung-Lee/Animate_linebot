@@ -77,8 +77,9 @@ def handle_message(event):
 
     elif re.match("校園番劇", msg):
         ani_data = Ani_info.get_category_data("校園")
-        content = Msg_Ani.ani_category("校園", ani_data)
-        line_bot_api.push_message(uid, content)
+        line_bot_api.push_message(uid, TextSendMessage(str(ani_data)))
+        # content = Msg_Ani.ani_category("校園", ani_data)
+        # line_bot_api.push_message(uid, content)
 
     elif re.match("戀愛番劇", msg):
         ani_data = Ani_info.get_category_data("戀愛")
