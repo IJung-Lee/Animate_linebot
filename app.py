@@ -43,6 +43,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = str(event.message.text).upper().strip() # 使用者輸入的內容
+    time = event.message.timestamp #使用者輸入的時間
     profile = line_bot_api.get_profile(event.source.user_id)
     uid = profile.user_id # 發訊者ID
 
@@ -58,6 +59,9 @@ def handle_message(event):
             line_bot_api.push_message(uid, message)
         else:
             line_bot_api.push_message(uid, TextSendMessage('查無此番劇，請重新搜尋。'))
+    #test
+    elif re.match("測試", msg):
+        line_bot_api.push_message(uid, TextSendMessage(str(time)))
     
     #時間
     elif re.match("時間", msg):
@@ -80,9 +84,9 @@ def handle_message(event):
         content = Msg_Ani.ani_category(msg[:2], ani_data)
         line_bot_api.push_message(uid, content)
 
-
+    #無法回應
     else:
-        line_bot_api.push_message(uid, TextSendMessage('很抱歉我們無法回應該訊息 \n\n輸入《時間》找尋每日番劇！ \n輸入《類別》查找各類番劇！'))
+        line_bot_api.push_message(uid, TextSendMessage('很抱歉アニ無法回應該訊息 \n\n輸入《時間》找尋每日番劇！ \n輸入《類別》查找各類番劇！ \n輸入《#動畫名》查看動畫資訊！'))
 
 
 
