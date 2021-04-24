@@ -75,6 +75,16 @@ def handle_message(event):
         message = Msg_Template.category_menu()
         line_bot_api.push_message(uid, message)
 
+    elif re.match("校園", msg):
+        ani_data = Ani_info.get_category_data("校園")
+        content = Msg_Ani.ani_category(MyAni)("校園", ani_data)
+        line_bot_api.push_message(uid, content)
+
+    elif re.match("戀愛", msg):
+        ani_data = Ani_info.get_category_data("戀愛")
+        content = Msg_Ani.ani_category(MyAni)("戀愛", ani_data)
+        line_bot_api.push_message(uid, content)
+#戀愛科幻奇幻日常冒險動作其他
     else:
         line_bot_api.push_message(uid, TextSendMessage('很抱歉我們無法回應該訊息 \n\n輸入《時間》找尋每日番劇！ \n輸入《類別》查找各類番劇！'))
 

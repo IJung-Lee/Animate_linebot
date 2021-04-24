@@ -70,7 +70,6 @@ def get_week_data(ani_week):
 
 ##類別資訊
 def get_category_data(ani_cate):
-    ani_cate = ani_cate[0:2]
     data = df[df[ani_cate] == 1]
     data.reset_index(inplace=True)
     name = list(data.番名.values)

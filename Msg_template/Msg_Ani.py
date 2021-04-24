@@ -197,31 +197,29 @@ def ani_week(AniWeek, AniData):
     return flex_message
 
 
-##類別資訊 ＃多頁訊息
-# def ani_category(AniCategory): 
-#     data = Ani_info.get_category_data(AniCategory)
+#類別資訊 ＃多頁訊息
+def ani_category(AniCate, AniData): 
+    name = data[0]
+    intro = data[1]
+    image = data[2] 
+    tag =  data[3]
+    tag_color = data[4]
+    web = data[5]
+    url = data[6]
 
-#     name = data[0]
-#     intro = data[1]
-#     image = data[2] 
-#     tag =  data[3]
-#     tag_color = data[4]
-#     web = data[5]
-#     url = data[6]
+    ani_bubbles = []
+    for i in range(len(name)):
+        links = get_link_box(web[i], url[i])
+        ani_bubbles.append(ani_bubble(name[i], intro[i], image[i], tag[i], tag_color[i] ,links))
 
-#     ani_bubbles = []
-#     for i in range(len(name)):
-#         links = links = get_link_box(web[i], url[i])
-#         ani_bubbles.append(ani_bubble(name[i], intro[i], image[i], tag[i], tag_color[i] ,links, collect[i]))
-
-#     flex_message = FlexSendMessage(
-#             alt_text = AniCategory + "番劇資訊",
-#             contents = {
-#                         "type": "carousel",
-#                         "contents": ani_bubbles
-#             }
-#     )
-#     return flex_message
+    flex_message = FlexSendMessage(
+            alt_text = AniCate + "番劇資訊",
+            contents = {
+                        "type": "carousel",
+                        "contents": ani_bubbles
+            }
+    )
+    return flex_message
 
 
 ##收藏清單
