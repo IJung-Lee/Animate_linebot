@@ -44,7 +44,6 @@ def get_ani_data(ani_name):
 
 ##星期資訊
 def get_week_data(ani_week):
-    ani_week = ani_week[2]  ##
     data = df[df["星期"] == ani_week]
     data.reset_index(inplace=True)
     name = list(data.番名.values)

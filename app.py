@@ -3,6 +3,7 @@ import re
 from datetime import datetime
 
 import Ani_info
+from Msg_template import Msg_Ani
 from Msg_template import Msg_info
 from Msg_template import Msg_quick
 from Msg_template import Msg_Template
@@ -49,25 +50,30 @@ def handle_message(event):
     if re.match("#", msg):
         search_result = Ani_info.ani_search(msg[1:])
         if len(search_result) > 1:
-            content = Msg_quick.ani_name_select(search_result)
-            line_bot_api.push_message(uid, content)
+            message = Msg_quick.ani_name_select(search_result)
+            line_bot_api.push_message(uid, message)
         elif len(search_result) == 1:
             ani_data = Ani_info.get_ani_data(search_result[0])
-            content = Msg_info.ani_information(ani_data)
-            line_bot_api.push_message(uid, content)
+            message = Msg_info.ani_information(ani_data)
+            line_bot_api.push_message(uid, message)
         else:
             line_bot_api.push_message(uid, TextSendMessage('查無此番劇，請重新搜尋。'))
     
     #時間
     elif re.match("時間", msg):
-        flex_message = Msg_Template.week_menu()
-        line_bot_api.push_message(uid, flex_message)
+        message = Msg_Template.week_menu()
+        line_bot_api.push_message(uid, message)
 
+    elif re.match("星期", msg):
+        week = msg[2] 
+        ani_data = Ani_info.get_week_data(week)
+        content = Msg_Ani.ani_week(ani_data)
+        line_bot_api.push_message(uid, content)
 
     #類別
     elif re.match("類別", msg):
-        flex_message = Msg_Template.category_menu()
-        line_bot_api.push_message(uid, flex_message)
+        message = Msg_Template.category_menu()
+        line_bot_api.push_message(uid, message)
 
     else:
         line_bot_api.push_message(uid, TextSendMessage('很抱歉我們無法回應該訊息 \n\n輸入《時間》找尋每日番劇！ \n輸入《類別》查找各類番劇！'))
