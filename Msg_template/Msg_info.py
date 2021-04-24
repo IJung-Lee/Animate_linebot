@@ -88,7 +88,7 @@ def ani_bubble(name, intro, image, tag, tag_color, links):
                 {
                     "type": "box",
                     "layout": "vertical",
-                    "contents": [links],
+                    "contents": links,
                     "paddingAll": "sm"
                 },
                 {
