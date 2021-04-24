@@ -119,7 +119,7 @@ def ani_information(AniData):
     image = AniData[2] 
     tag =  AniData[3]
     tag_color = AniData[4]
-    links = get_link_box(data[5], data[6])
+    links = get_link_box(AniData[5], AniData[6])
     content = ani_bubble(name, intro, image, tag, tag_color, links)
     flex_message = FlexSendMessage(
             alt_text = name + "資訊",
