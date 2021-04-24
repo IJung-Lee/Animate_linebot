@@ -15,6 +15,7 @@ def get_link_box(web, url):
         }
         links.append(link)
     return links
+    
 
 def ani_bubble(name, intro, image, tag, tag_color, links):
     Ani = {
