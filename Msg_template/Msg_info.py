@@ -1,4 +1,5 @@
 from linebot.models import *
+import Ani_info
 
 def ani_bubble(name):
     Ani = {
