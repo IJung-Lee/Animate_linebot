@@ -97,7 +97,7 @@ def ani_bubble(name, intro, image, tag, tag_color, links):
                     "action": {
                     "type": "message",
                     "label": "收藏",
-                    "text": "收藏"
+                    "text": "收藏" + name
                     },
                     "style": "primary",
                     "color": "#81C7D4",
