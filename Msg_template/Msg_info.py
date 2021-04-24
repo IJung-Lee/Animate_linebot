@@ -1,6 +1,22 @@
 from linebot.models import *
 
-def ani_bubble(name, intro, image, tag, tag_color):
+##觀看網址button
+def get_link_box(web, url):
+    links = []
+    for i in range(len(web)):
+        link = {
+                "type": "button",
+                "action": {
+                            "type": "uri",
+                            "label": web[i],
+                            "uri": url[i]
+                },
+                "height": "sm"
+        }
+        links.append(link)
+    return links
+
+def ani_bubble(name, intro, image, tag, tag_color, links):
     Ani = {
         "type": "bubble",
         "size": "kilo",
@@ -72,26 +88,7 @@ def ani_bubble(name, intro, image, tag, tag_color):
                 {
                     "type": "box",
                     "layout": "vertical",
-                    "contents": [
-                    {
-                        "type": "button",
-                        "action": {
-                        "type": "uri",
-                        "label": "巴哈姆特",
-                        "uri": "https://ani.gamer.com.tw/animeVideo.php?sn=22220"
-                        },
-                        "height": "sm"
-                    },
-                    {
-                        "type": "button",
-                        "action": {
-                        "type": "uri",
-                        "label": "bilibili",
-                        "uri": "http://linecorp.com/"
-                        },
-                        "height": "sm"
-                    }
-                    ],
+                    "contents": [links],
                     "paddingAll": "sm"
                 },
                 {
@@ -121,8 +118,8 @@ def ani_information(AniData):
     image = AniData[2] 
     tag =  AniData[3]
     tag_color = AniData[4]
-    # links = get_link_box(data[5], data[6])
-    content = ani_bubble(name, intro, image, tag, tag_color)
+    links = get_link_box(data[5], data[6])
+    content = ani_bubble(name, intro, image, tag, tag_color, links)
     flex_message = FlexSendMessage(
             alt_text = name + "資訊",
             contents = content
