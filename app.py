@@ -43,7 +43,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = str(event.message.text).upper().strip() # 使用者輸入的內容
-    time = event.message.timestamp #使用者輸入的時間
+    time = event.timestamp #使用者輸入的時間
     profile = line_bot_api.get_profile(event.source.user_id)
     uid = profile.user_id # 發訊者ID
 
