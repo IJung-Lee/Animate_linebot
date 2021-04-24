@@ -118,7 +118,8 @@ def ani_bubble(name, intro, image, tag, tag_color, links):
                     },
                     "style": "primary",
                     "color": "#81C7D4",
-                    "height": "sm"
+                    "height": "sm",
+                    "offsetBottom": "1px"
                 }
                 ]
             }
