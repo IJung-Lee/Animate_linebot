@@ -199,13 +199,13 @@ def ani_week(AniWeek, AniData):
 
 #類別資訊 ＃多頁訊息
 def ani_category(AniCate, AniData): 
-    name = data[0]
-    intro = data[1]
-    image = data[2] 
-    tag =  data[3]
-    tag_color = data[4]
-    web = data[5]
-    url = data[6]
+    name = AniData[0]
+    intro = AniData[1]
+    image = AniData[2] 
+    tag =  AniData[3]
+    tag_color = AniData[4]
+    web = AniData[5]
+    url = AniData[6]
 
     ani_bubbles = []
     for i in range(len(name)):
