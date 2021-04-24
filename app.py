@@ -67,8 +67,9 @@ def handle_message(event):
     elif re.match("星期", msg):
         week = msg[2] 
         ani_data = Ani_info.get_week_data(week)
-        content = Msg_Ani.ani_week(ani_data)
-        line_bot_api.push_message(uid, content)
+        line_bot_api.push_message(uid, TextSendMessage(str(ani_data)))
+        # content = Msg_Ani.ani_week(ani_data)
+        # line_bot_api.push_message(uid, content)
 
     #類別
     elif re.match("類別", msg):
