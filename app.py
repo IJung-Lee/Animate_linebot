@@ -75,14 +75,44 @@ def handle_message(event):
         message = Msg_Template.category_menu()
         line_bot_api.push_message(uid, message)
 
-    elif re.match("校園", msg):
+    elif re.match("校園番劇", msg):
         ani_data = Ani_info.get_category_data("校園")
-        content = Msg_Ani.ani_category(MyAni)("校園", ani_data)
+        content = Msg_Ani.ani_category("校園", ani_data)
         line_bot_api.push_message(uid, content)
 
-    elif re.match("戀愛", msg):
+    elif re.match("戀愛番劇", msg):
         ani_data = Ani_info.get_category_data("戀愛")
-        content = Msg_Ani.ani_category(MyAni)("戀愛", ani_data)
+        content = Msg_Ani.ani_category("戀愛", ani_data)
+        line_bot_api.push_message(uid, content)
+
+    elif re.match("科幻番劇", msg):
+        ani_data = Ani_info.get_category_data("科幻")
+        content = Msg_Ani.ani_category("科幻", ani_data)
+        line_bot_api.push_message(uid, content)
+
+    elif re.match("奇幻番劇", msg):
+        ani_data = Ani_info.get_category_data("奇幻")
+        content = Msg_Ani.ani_category("奇幻", ani_data)
+        line_bot_api.push_message(uid, content)
+
+    elif re.match("日常番劇", msg):
+        ani_data = Ani_info.get_category_data("日常")
+        content = Msg_Ani.ani_category("日常", ani_data)
+        line_bot_api.push_message(uid, content)
+
+    elif re.match("冒險番劇", msg):
+        ani_data = Ani_info.get_category_data("冒險")
+        content = Msg_Ani.ani_category("冒險", ani_data)
+        line_bot_api.push_message(uid, content)
+    
+    elif re.match("動作番劇", msg):
+        ani_data = Ani_info.get_category_data("動作")
+        content = Msg_Ani.ani_category("動作", ani_data)
+        line_bot_api.push_message(uid, content)
+    
+    elif re.match("其他番劇", msg):
+        ani_data = Ani_info.get_category_data("其他")
+        content = Msg_Ani.ani_category("其他", ani_data)
         line_bot_api.push_message(uid, content)
 #戀愛科幻奇幻日常冒險動作其他
     else:
