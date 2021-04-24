@@ -107,24 +107,30 @@ def ani_bubble(name, intro, image, tag, tag_color, links):
                     "type": "box",
                     "layout": "vertical",
                     "contents": links,
-                    "paddingAll": "sm"
-                },
-                {
-                    "type": "button",
-                    "action": {
-                    "type": "message",
-                    "label": "收藏",
-                    "text": "收藏" + name
-                    },
-                    "style": "primary",
-                    "color": "#81C7D4",
-                    "height": "sm",
-                    "offsetBottom": "1px"
+                    "paddingTop": "sm"
                 }
                 ]
             }
             ],
-            "paddingAll": "15px"
+            "paddingBottom": "none"
+        },
+        "footer": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+            {
+                "type": "button",
+                "action": {
+                "type": "message",
+                "label": "收藏",
+                "text": "收藏" + name
+                },
+                "style": "primary",
+                "color": "#81C7D4",
+                "height": "sm"
+            }
+            ],
+            "paddingTop": "none"
         }
     }
     return Ani
