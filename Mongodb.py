@@ -8,8 +8,8 @@ aniDB='user_db'
 
 # DB  connection
 def constructor_ani():
-    # client = MongoClient(os.environ.get("MONGODB_URI"))
-    client = MongoClient("mongodb//myuser:love812118@anitest.ql5k4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+    client = MongoClient(os.environ["MONGODB_URI"])
+    # client = MongoClient("mongodb+srv://myuser:love812118@anitest.ql5k4.mongodb.net/user_db?retryWrites=true&w=majority")
     db = client[aniDB]
     return db
 
@@ -53,10 +53,10 @@ def show_ani(uid):
     return MyAni
 
 
-if __name__ == "__main__":
-    client = MongoClient("mongodb+srv://myuser:love812118@anitest.ql5k4.mongodb.net/user_db?retryWrites=true&w=majority")
-    # client = MongoClient("mongodb+srv://myuser:love812118@anitest.ql5k4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
-    db = client[aniDB]
-    dblist = client.list_database_names()
-    if "user_db" in dblist:
-        print("数据库已存在！")
+# if __name__ == "__main__":
+#     client = MongoClient("mongodb+srv://myuser:love812118@anitest.ql5k4.mongodb.net/user_db?retryWrites=true&w=majority")
+#     # client = MongoClient("mongodb+srv://myuser:love812118@anitest.ql5k4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+#     db = client[aniDB]
+#     dblist = client.list_database_names()
+#     if "user_db" in dblist:
+#         print("数据库已存在！")
