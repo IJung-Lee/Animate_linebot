@@ -43,7 +43,6 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = str(event.message.text).upper().strip() # 使用者輸入的內容
-    # time = event.timestamp #使用者輸入的時間
     profile = line_bot_api.get_profile(event.source.user_id)
     uid = profile.user_id # 發訊者ID
 
@@ -59,20 +58,24 @@ def handle_message(event):
             line_bot_api.push_message(uid, message)
         else:
             line_bot_api.push_message(uid, TextSendMessage('查無此番劇，請重新搜尋。'))
-    #test
-    elif re.match("今日", msg):
-        line_bot_api.push_message(uid, TextSendMessage(Ani_info.get_today()))
     
+
     #時間
     elif re.match("時間", msg):
         message = Msg_Template.week_menu()
         line_bot_api.push_message(uid, message)
 
+    elif re.match("今日", msg):
+        day = Ani_info.get_today()
+        ani_data = Ani_info.get_week_data(day[2])
+        message = Msg_Ani.ani_week(day[2], ani_data)
+        line_bot_api.push_message(uid, message)
+
     elif re.match("星期", msg):
-        week = msg[2] 
-        ani_data = Ani_info.get_week_data(week)
-        content = Msg_Ani.ani_week(week, ani_data)
-        line_bot_api.push_message(uid, content)
+        day = msg[2] 
+        ani_data = Ani_info.get_week_data(day)
+        message = Msg_Ani.ani_week(day, ani_data)
+        line_bot_api.push_message(uid, message)
 
     #類別
     elif re.match("類別", msg):
@@ -81,8 +84,8 @@ def handle_message(event):
 
     elif re.match(r'校園|戀愛|科幻|奇幻|日常|冒險|動作|其他', msg):
         ani_data = Ani_info.get_category_data(msg[:2])
-        content = Msg_Ani.ani_category(msg[:2], ani_data)
-        line_bot_api.push_message(uid, content)
+        message = Msg_Ani.ani_category(msg[:2], ani_data)
+        line_bot_api.push_message(uid, message)
 
     #無法回應
     else:
