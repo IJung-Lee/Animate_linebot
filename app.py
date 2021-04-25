@@ -21,7 +21,8 @@ app = Flask(__name__)
 line_bot_api = LineBotApi(os.environ["CHANNEL_ACCESS_TOKEN"])
 handler = WebhookHandler(os.environ["CHANNEL_SECRET"])
 
-client = MongoClient("mongodb+srv://myuser:love812118@anitest.ql5k4.mongodb.net/user_db?retryWrites=true&w=majority")
+client = MongoClient(os.environ["MONGODB_URI"])
+# client = MongoClient("mongodb+srv://myuser:love812118@anitest.ql5k4.mongodb.net/user_db?retryWrites=true&w=majority")
 db = client['user_db']
 
 # 監聽所有來自 /callback 的 Post Request
