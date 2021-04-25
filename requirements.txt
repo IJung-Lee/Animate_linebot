@@ -4,5 +4,4 @@ flask==1.1.2
 gunicorn==20.0.4
 requests==2.25.0
 pymongo
-urllib
 dns
