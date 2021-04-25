@@ -59,8 +59,7 @@ def handle_message(event):
         elif len(search_result) == 1:
             ani_data = Ani_info.get_ani_data(search_result[0])
             inDB = Mongodb.find_ani(uid, search_result[0])
-            line_bot_api.push_message(uid, TextSendMessage(str(inDB)))
-            message = Msg_Ani.ani_information(ani_data, True)
+            message = Msg_Ani.ani_information(ani_data, inDB)
             line_bot_api.push_message(uid, message)
         else:
             line_bot_api.push_message(uid, TextSendMessage('查無此番劇，請重新搜尋。'))
