@@ -44,21 +44,21 @@ def get_ani_data(ani_name):
 
 ##獲取日期
 def get_today():
-    today = datetime.today.weekday()
-    if today == "Sunday":
-        return "星期日"
-    elif today == "Monday":
+    today = datetime.today().weekday()
+    if today == 0:
         return "星期一"
-    elif today == "Tuseday":
+    elif today == 1:
         return "星期二"
-    elif today == "Wenseday":
+    elif today == 2:
         return "星期三"
-    elif today == "Thursday":
+    elif today == 3:
         return "星期四"
-    elif today == "Friday":
+    elif today == 4:
         return "星期五"
-    elif today == "Saturday":
+    elif today == 5:
         return "星期六"
+    elif today == 6:
+        return "星期日"
 
 
 ##星期資訊
