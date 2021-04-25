@@ -1,11 +1,9 @@
-import os
-import re
+import os, re
 from datetime import datetime
 
+# import Mongodb
 import Ani_info
 from Msg_template import Msg_Ani
-# from Msg_template import Msg_info
-# from Msg_template import Msg_quick
 from Msg_template import Msg_Template
 
 
@@ -50,12 +48,10 @@ def handle_message(event):
     if re.match("#", msg):
         search_result = Ani_info.ani_search(msg[1:])
         if len(search_result) > 1:
-            # message = Msg_quick.ani_name_select(search_result)
             message = Msg_Ani.ani_name_select(search_result)
             line_bot_api.push_message(uid, message)
         elif len(search_result) == 1:
             ani_data = Ani_info.get_ani_data(search_result[0])
-            # message = Msg_info.ani_information(ani_data)
             message = Msg_Ani.ani_information(ani_data)
             line_bot_api.push_message(uid, message)
         else:
