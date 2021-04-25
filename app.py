@@ -60,8 +60,8 @@ def handle_message(event):
         else:
             line_bot_api.push_message(uid, TextSendMessage('查無此番劇，請重新搜尋。'))
     #test
-    elif re.match("測試", msg):
-        line_bot_api.push_message(uid, TextSendMessage(Ani_info.get_today()))
+    elif re.match("今日", msg):
+        line_bot_api.push_message(uid, TextSendMessage(datetime.today.weekday()))
     
     #時間
     elif re.match("時間", msg):
