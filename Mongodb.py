@@ -20,7 +20,7 @@ def insert_ani(uid, name):
     x = collect.find_one({"favorite_ani":name})
     if x == None:
         content = collect.insert_one({"favorite_ani":name})
-    return name + "收藏了就要好好追完哦"
+    return "收藏了就要好好追完哦"
 
 #刪除收藏
 def delete_ani(uid, name):   

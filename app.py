@@ -98,7 +98,11 @@ def handle_message(event):
 
     #收藏
     elif re.match("收藏" ,msg): 
-        collect = msg[2:]
+        collect = Mongodb.insert_ani(uid, msg[2:])
+        line_bot_api.push_message(uid, TextSendMessage(collect))
+
+    elif re.match("取消" ,msg): 
+        collect = Mongodb.elete_ani(uid, msg[2:])
         line_bot_api.push_message(uid, TextSendMessage(collect))
         
     #無法回應
