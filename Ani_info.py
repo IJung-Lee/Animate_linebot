@@ -1,4 +1,5 @@
 import pandas as pd
+from datetime import datetime
 
 df = pd.read_csv('Ani_data.csv') 
 
@@ -40,6 +41,24 @@ def get_ani_data(ani_name):
         url.append(data.平台2.values[0].split( )[1])
     
     return name, intro, image, tag, tag_color, web, url
+
+##獲取日期
+def get_today():
+    today = datetime.today.weekday()
+    if today == "Sunday":
+        return "星期日"
+    elif today == "Monday":
+        return "星期一"
+    elif today == "Tuseday":
+        return "星期二"
+    elif today == "Wenseday":
+        return "星期三"
+    elif today == "Thursday":
+        return "星期四"
+    elif today == "Friday":
+        return "星期五"
+    elif today == "Saturday":
+        return "星期六"
 
 
 ##星期資訊

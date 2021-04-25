@@ -43,7 +43,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = str(event.message.text).upper().strip() # 使用者輸入的內容
-    time = event.timestamp #使用者輸入的時間
+    # time = event.timestamp #使用者輸入的時間
     profile = line_bot_api.get_profile(event.source.user_id)
     uid = profile.user_id # 發訊者ID
 
@@ -61,7 +61,7 @@ def handle_message(event):
             line_bot_api.push_message(uid, TextSendMessage('查無此番劇，請重新搜尋。'))
     #test
     elif re.match("測試", msg):
-        line_bot_api.push_message(uid, TextSendMessage(str(time)))
+        line_bot_api.push_message(uid, TextSendMessage(Ani_info.get_today()))
     
     #時間
     elif re.match("時間", msg):
