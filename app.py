@@ -19,11 +19,10 @@ from linebot.models import *
 app = Flask(__name__)
 
 line_bot_api = LineBotApi(os.environ.get("CHANNEL_ACCESS_TOKEN"))
-handler = WebhookHandler(os.environ.get("CHANNEL_SECRET"))
+handler = WebhookHandler(os.environ["CHANNEL_SECRET"])
 
-
-client = MongoClient(os.environ.get("MONGODB_URI"))
-db = client['user_db']
+# client = MongoClient("mongodb+srv://myuser:love812118@anitest.ql5k4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+# db = client['user_db']
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])

@@ -3,4 +3,4 @@ line_bot_sdk==1.19.0
 flask==1.1.2
 gunicorn==20.0.4
 requests==2.25.0
-pymongo
+pymongo==3.11.0
