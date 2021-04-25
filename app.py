@@ -1,8 +1,9 @@
-import os, re
+import os, re, dns
+import urllib.parse
 from datetime import datetime
 from pymongo import MongoClient
 
-import Mongodb
+# import Mongodb
 import Ani_info
 from Msg_template import Msg_Ani
 from Msg_template import Msg_Template
@@ -20,6 +21,12 @@ app = Flask(__name__)
 line_bot_api = LineBotApi(os.environ.get("CHANNEL_ACCESS_TOKEN"))
 handler = WebhookHandler(os.environ.get("CHANNEL_SECRET"))
 
+try:
+    client = MongoClient("mongodb+srv://myuser:love812118@anitest.ql5k4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+    db = client['user_db']
+except:
+    print('error connect')
+    
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -53,8 +60,8 @@ def handle_message(event):
             line_bot_api.push_message(uid, message)
         elif len(search_result) == 1:
             ani_data = Ani_info.get_ani_data(search_result[0])
-            inDB = Mongodb.find_ani(uid, search_result[0])
-            line_bot_api.push_message(uid, TextSendMessage(str(inDB)))
+            # inDB = Mongodb.find_ani(uid, search_result[0])
+            # line_bot_api.push_message(uid, TextSendMessage(str(inDB)))
             message = Msg_Ani.ani_information(ani_data, True)
             line_bot_api.push_message(uid, message)
         else:
