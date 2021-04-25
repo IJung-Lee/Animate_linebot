@@ -52,7 +52,7 @@ def handle_message(event):
             line_bot_api.push_message(uid, message)
         elif len(search_result) == 1:
             ani_data = Ani_info.get_ani_data(search_result[0])
-            message = Msg_Ani.ani_information(ani_data)
+            message = Msg_Ani.ani_information(ani_data, True)
             line_bot_api.push_message(uid, message)
         else:
             line_bot_api.push_message(uid, TextSendMessage('查無此番劇，請重新搜尋。'))
@@ -62,27 +62,27 @@ def handle_message(event):
         message = Msg_Template.week_menu()
         line_bot_api.push_message(uid, message)
 
-    elif re.match("今日", msg):
-        day = Ani_info.get_today()
-        ani_data = Ani_info.get_week_data(day[2])
-        message = Msg_Ani.ani_week(day[2], ani_data)
-        line_bot_api.push_message(uid, message)
+    # elif re.match("今日", msg):
+    #     day = Ani_info.get_today()
+    #     ani_data = Ani_info.get_week_data(day[2])
+    #     message = Msg_Ani.ani_week(day[2], ani_data)
+    #     line_bot_api.push_message(uid, message)
 
-    elif re.match("星期", msg):
-        day = msg[2] 
-        ani_data = Ani_info.get_week_data(day)
-        message = Msg_Ani.ani_week(day, ani_data)
-        line_bot_api.push_message(uid, message)
+    # elif re.match("星期", msg):
+    #     day = msg[2] 
+    #     ani_data = Ani_info.get_week_data(day)
+    #     message = Msg_Ani.ani_week(day, ani_data)
+    #     line_bot_api.push_message(uid, message)
 
     #類別
     elif re.match("類別", msg):
         message = Msg_Template.category_menu()
         line_bot_api.push_message(uid, message)
 
-    elif re.match(r'校園|戀愛|科幻|奇幻|日常|冒險|動作|其他', msg):
-        ani_data = Ani_info.get_category_data(msg[:2])
-        message = Msg_Ani.ani_category(msg[:2], ani_data)
-        line_bot_api.push_message(uid, message)
+    # elif re.match(r'校園|戀愛|科幻|奇幻|日常|冒險|動作|其他', msg):
+    #     ani_data = Ani_info.get_category_data(msg[:2])
+    #     message = Msg_Ani.ani_category(msg[:2], ani_data)
+    #     line_bot_api.push_message(uid, message)
 
     #無法回應
     else:

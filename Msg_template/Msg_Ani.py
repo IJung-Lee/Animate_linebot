@@ -19,22 +19,34 @@ def get_link_box(web, url):
 ##收藏判斷
 def ani_collect(collect , AniName):
     if collect == True:
-        action = {
+        content = {
+            "type": "button",
+            "action": {
             "type": "message",
             "label": "已收藏",
             "text": "取消收藏" + AniName
+            },
+            "style": "primary",
+            "color": "#F4A7B9",
+            "height": "sm"
         }
     elif collect == False:
-        action = {
+        content = {
+            "type": "button",
+            "action": {
             "type": "message",
             "label": "收藏",
             "text": "收藏" + AniName
+            },
+            "style": "primary",
+            "color": "#81C7D4",
+            "height": "sm"
         }
-    return action
+    return content
 
 
 ##動畫bubble
-def ani_bubble(name, intro, image, tag, tag_color, links):
+def ani_bubble(name, intro, image, tag, tag_color, links, collect):
     Ani = {
         "type": "bubble",
         "size": "kilo",
@@ -117,19 +129,7 @@ def ani_bubble(name, intro, image, tag, tag_color, links):
         "footer": {
             "type": "box",
             "layout": "vertical",
-            "contents": [
-            {
-                "type": "button",
-                "action": {
-                "type": "message",
-                "label": "收藏",
-                "text": "收藏" + name
-                },
-                "style": "primary",
-                "color": "#81C7D4",
-                "height": "sm"
-            }
-            ],
+            "contents": [collect],
             "paddingTop": "none"
         }
     }
@@ -157,14 +157,16 @@ def ani_name_select(AniName_list):
 
 
 ##動畫資訊 #圖文選單
-def ani_information(AniData): 
+def ani_information(AniData, inDB): 
     name = AniData[0]
     intro = AniData[1]
     image = AniData[2] 
     tag =  AniData[3]
     tag_color = AniData[4]
     links = get_link_box(AniData[5], AniData[6])
-    content = ani_bubble(name, intro, image, tag, tag_color, links)
+    collect = ani_collect(inDB , name)
+
+    content = ani_bubble(name, intro, image, tag, tag_color, links, collect)
     flex_message = FlexSendMessage(
             alt_text = name + "資訊",
             contents = content
@@ -173,7 +175,7 @@ def ani_information(AniData):
 
 
 ##星期資訊 #多頁訊息
-def ani_week(AniWeek, AniData): 
+def ani_week(AniWeek, AniData, inDB): 
     name = AniData[0]
     intro = AniData[1]
     image = AniData[2] 
@@ -185,7 +187,8 @@ def ani_week(AniWeek, AniData):
     ani_bubbles = []
     for i in range(len(name)):
         links = get_link_box(web[i], url[i])
-        ani_bubbles.append(ani_bubble(name[i], intro[i], image[i], tag[i], tag_color[i] ,links))
+        collect = ani_collect(inDB[i] , name[i])
+        ani_bubbles.append(ani_bubble(name[i], intro[i], image[i], tag[i], tag_color[i] ,links, collect))
 
     flex_message = FlexSendMessage(
             alt_text = "星期" + AniWeek + "番劇資訊",
@@ -198,7 +201,7 @@ def ani_week(AniWeek, AniData):
 
 
 #類別資訊 ＃多頁訊息
-def ani_category(AniCate, AniData): 
+def ani_category(AniCate, AniData, inDB): 
     name = AniData[0]
     intro = AniData[1]
     image = AniData[2] 
@@ -210,7 +213,8 @@ def ani_category(AniCate, AniData):
     ani_bubbles = []
     for i in range(len(name)):
         links = get_link_box(web[i], url[i])
-        ani_bubbles.append(ani_bubble(name[i], intro[i], image[i], tag[i], tag_color[i] ,links))
+        collect = ani_collect(inDB[i] , name[i])
+        ani_bubbles.append(ani_bubble(name[i], intro[i], image[i], tag[i], tag_color[i] ,links, collect))
 
     flex_message = FlexSendMessage(
             alt_text = AniCate + "番劇資訊",
