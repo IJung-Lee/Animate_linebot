@@ -6,8 +6,8 @@ from pymongo import MongoClient
 import Mongodb
 import Ani_info
 from Msg_template import Msg_Ani
+from Msg_template import Msg_MyAni
 from Msg_template import Msg_Template
-
 
 from flask import Flask, abort, request
 from linebot import LineBotApi, WebhookHandler
@@ -104,6 +104,10 @@ def handle_message(event):
     elif re.match("取消" ,msg): 
         collect = Mongodb.delete_ani(uid, msg[4:])
         line_bot_api.push_message(uid, TextSendMessage(collect))
+
+    elif re.match("我的追番" ,msg): 
+        message = Msg_MyAni.my_ani(Mongodb.show_ani(uid))
+        line_bot_api.push_message(uid, message)
         
     #無法回應
     else:

@@ -1,41 +1,44 @@
 from linebot.models import *
 
-##收藏清單
-def ani_category(MyAni): 
+##收藏內容
+def get_my_ani(AniName_list):
     contents = []
-    for ani in range(len(MyAni)):
-        contents.append({
-                "type": "text",
-                "text": ani,
-                "action": {
-                    "type": "message",
-                    "label": "action",
-                    "text": "#" + ani
-                },
-                "color": "#006284",
-                            "margin": "md"
-        })
-
-    flex_message = FlexSendMessage(
-            alt_text = "番劇收藏清單",
-            contents = {
-                "type": "bubble",
-                "body": {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [
-                        {
-                            "type": "text",
-                            "text": "以下為您的收藏清單，請點擊番名來查看動畫資訊。",
-                            "wrap": True
-                        },
-                        {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": contents
-                        }
-                    ]
-                }
+    for i in range(len(AniName_list)):
+        collect = {
+            "type": "text",
+            "text": "⊛ " + i,
+            "size": "md",
+            "wrap": False,
+            "margin": "sm",
+            "action": {
+            "type": "message",
+            "label": "action",
+            "text": "#" + i
             }
+        }
+        contents.append(collect)
+    return contents
+
+# 收藏清單
+def my_ani(AniName_list): 
+    flex_message = FlexSendMessage(
+        alt_text = "Week Menu",
+        contents = {
+            "type": "bubble",
+            "size": "kilo",
+            "hero": {
+                "type": "image",
+                "url": "https://i.imgur.com/UpwzZpL.png",
+                "size": "full",
+                "aspectRatio": "5:2",
+                "aspectMode": "cover",
+            },
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": get_my_ani(AniName_list),
+                "paddingAll": "lg"
+            }
+        }
     )
     return flex_message

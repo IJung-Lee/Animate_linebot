@@ -14,13 +14,17 @@ def constructor_ani():
     return db
 
 #新增收藏
-def insert_ani(uid, name):   
-    db = constructor_ani()
+def insert_ani(uid, name):  
+    db=constructor_ani()
     collect = db[uid]
     x = collect.find_one({"favorite_ani":name})
+    y = show_ani(uid)
     if x == None:
-        content = collect.insert_one({"favorite_ani":name})
-    return "收藏了就要好好追完哦"
+        if ((len(y) <= 10 ) or (y=="收藏空空如也！")):
+            content = collect.insert_one({"favorite_ani":name})
+            return "收藏了就要好好追完哦！"
+        else:
+            return "追太多番啦！只能收藏10部哦！"
 
 #刪除收藏
 def delete_ani(uid, name):   
@@ -29,7 +33,7 @@ def delete_ani(uid, name):
     x = collect.find_one({"favorite_ani":name})
     if x != None:
         collect.delete_one({"favorite_ani":name})
-    return "收藏了就別拋棄我啦"
+    return "收藏了就別拋棄我啦！"
 
 #查詢動畫是否有收藏
 def find_ani(uid, name):     
@@ -50,13 +54,7 @@ def show_ani(uid):
     for x in mydoc:
         l=list(x.values())
         MyAni.append(l[1])
-    return MyAni
-
-
-# if __name__ == "__main__":
-#     client = MongoClient("mongodb+srv://myuser:love812118@anitest.ql5k4.mongodb.net/user_db?retryWrites=true&w=majority")
-#     # client = MongoClient("mongodb+srv://myuser:love812118@anitest.ql5k4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
-#     db = client[aniDB]
-#     dblist = client.list_database_names()
-#     if "user_db" in dblist:
-#         print("数据库已存在！")
+    if len(MyAni) == 0:
+        return "收藏空空如也！"
+    else:
+        return MyAni
