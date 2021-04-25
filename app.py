@@ -74,21 +74,27 @@ def handle_message(event):
         message = Msg_Ani.ani_week(day[2], ani_data, inDB)
         line_bot_api.push_message(uid, message)
 
-    # elif re.match("星期", msg):
-    #     day = msg[2] 
-    #     ani_data = Ani_info.get_week_data(day)
-    #     message = Msg_Ani.ani_week(day, ani_data)
-    #     line_bot_api.push_message(uid, message)
+    elif re.match("星期", msg):
+        day = msg[2] 
+        ani_data = Ani_info.get_week_data(day)
+        inDB = []
+        for i in range(len(ani_data[0])):
+            inDB.append(Mongodb.find_ani(uid, ani_data[0][i]))
+        message = Msg_Ani.ani_week(day, ani_data, inDB)
+        line_bot_api.push_message(uid, message)
 
     #類別
     elif re.match("類別", msg):
         message = Msg_Template.category_menu()
         line_bot_api.push_message(uid, message)
 
-    # elif re.match(r'校園|戀愛|科幻|奇幻|日常|冒險|動作|其他', msg):
-    #     ani_data = Ani_info.get_category_data(msg[:2])
-    #     message = Msg_Ani.ani_category(msg[:2], ani_data)
-    #     line_bot_api.push_message(uid, message)
+    elif re.match(r'校園|戀愛|科幻|奇幻|日常|冒險|動作|其他', msg):
+        ani_data = Ani_info.get_category_data(msg[:2])
+        inDB = []
+        for i in range(len(ani_data[0])):
+            inDB.append(Mongodb.find_ani(uid, ani_data[0][i]))
+        message = Msg_Ani.ani_category(msg[:2], ani_data, inDB)
+        line_bot_api.push_message(uid, message)
 
     #無法回應
     else:
