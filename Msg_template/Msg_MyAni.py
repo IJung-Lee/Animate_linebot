@@ -20,9 +20,9 @@ def get_my_ani(AniName_list):
     return contents
 
 # 收藏清單
-def my_ani(AniName_list): 
+def my_ani(Ani_list): 
     flex_message = FlexSendMessage(
-        alt_text = "Week Menu",
+        alt_text = "My Animation",
         contents = {
             "type": "bubble",
             "size": "kilo",
@@ -33,12 +33,12 @@ def my_ani(AniName_list):
                 "aspectRatio": "5:2",
                 "aspectMode": "cover",
             },
-            "body": {
-                "type": "box",
-                "layout": "vertical",
-                "contents": get_my_ani(AniName_list),
-                "paddingAll": "lg"
-            }
+            # "body": {
+            #     "type": "box",
+            #     "layout": "vertical",
+            #     "contents": get_my_ani(Ani_list),
+            #     "paddingAll": "lg"
+            # }
         }
     )
     return flex_message
