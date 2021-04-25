@@ -1,7 +1,7 @@
 import os, re
 from datetime import datetime
 
-# import Mongodb
+import Mongodb
 import Ani_info
 from Msg_template import Msg_Ani
 from Msg_template import Msg_Template
@@ -52,6 +52,8 @@ def handle_message(event):
             line_bot_api.push_message(uid, message)
         elif len(search_result) == 1:
             ani_data = Ani_info.get_ani_data(search_result[0])
+            inDB = Mongodb.find_ani(uid, search_result[0])
+            line_bot_api.push_message(uid, TextSendMessage(str(inDB)))
             message = Msg_Ani.ani_information(ani_data, True)
             line_bot_api.push_message(uid, message)
         else:
