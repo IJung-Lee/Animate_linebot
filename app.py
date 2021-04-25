@@ -4,8 +4,8 @@ from datetime import datetime
 
 import Ani_info
 from Msg_template import Msg_Ani
-from Msg_template import Msg_info
-from Msg_template import Msg_quick
+# from Msg_template import Msg_info
+# from Msg_template import Msg_quick
 from Msg_template import Msg_Template
 
 
@@ -50,16 +50,17 @@ def handle_message(event):
     if re.match("#", msg):
         search_result = Ani_info.ani_search(msg[1:])
         if len(search_result) > 1:
-            message = Msg_quick.ani_name_select(search_result)
+            # message = Msg_quick.ani_name_select(search_result)
+            message = Msg_Ani.ani_name_select(search_result)
             line_bot_api.push_message(uid, message)
         elif len(search_result) == 1:
             ani_data = Ani_info.get_ani_data(search_result[0])
-            message = Msg_info.ani_information(ani_data)
+            # message = Msg_info.ani_information(ani_data)
+            message = Msg_Ani.ani_information(ani_data)
             line_bot_api.push_message(uid, message)
         else:
             line_bot_api.push_message(uid, TextSendMessage('查無此番劇，請重新搜尋。'))
     
-
     #時間
     elif re.match("時間", msg):
         message = Msg_Template.week_menu()
@@ -89,7 +90,7 @@ def handle_message(event):
 
     #無法回應
     else:
-        line_bot_api.push_message(uid, TextSendMessage('很抱歉アニ無法回應該訊息 \n\n輸入《時間》找尋每日番劇！ \n輸入《類別》查找各類番劇！ \n輸入《#動畫名》查看動畫資訊！'))
+        line_bot_api.push_message(uid, TextSendMessage('很抱歉アニ無法回應該訊息 \n\n輸入《時間》找尋每日番劇！ \n輸入《今日》探索今日番劇！ \n輸入《類別》查找各類番劇！ \n輸入《#動畫名》查看動畫資訊！'))
 
 
 
