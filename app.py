@@ -106,8 +106,10 @@ def handle_message(event):
         line_bot_api.push_message(uid, TextSendMessage(collect))
 
     elif re.match("我的追番" ,msg): 
-        message = Msg_MyAni.my_ani(Mongodb.show_ani(uid))
-        line_bot_api.push_message(uid, message)
+        aaa = Mongodb.show_ani(uid)
+        line_bot_api.push_message(uid, TextSendMessage(str(aaa)))
+        # message = Msg_MyAni.my_ani(Mongodb.show_ani(uid))
+        # line_bot_api.push_message(uid, message)
         
     #無法回應
     else:
