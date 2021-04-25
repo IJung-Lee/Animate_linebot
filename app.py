@@ -21,10 +21,6 @@ app = Flask(__name__)
 line_bot_api = LineBotApi(os.environ["CHANNEL_ACCESS_TOKEN"])
 handler = WebhookHandler(os.environ["CHANNEL_SECRET"])
 
-# client = MongoClient(os.environ["MONGODB_URI"])
-# # client = MongoClient("mongodb+srv://myuser:love812118@anitest.ql5k4.mongodb.net/user_db?retryWrites=true&w=majority")
-# db = client['user_db']
-
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -69,11 +65,14 @@ def handle_message(event):
         message = Msg_Template.week_menu()
         line_bot_api.push_message(uid, message)
 
-    # elif re.match("今日", msg):
-    #     day = Ani_info.get_today()
-    #     ani_data = Ani_info.get_week_data(day[2])
-    #     message = Msg_Ani.ani_week(day[2], ani_data)
-    #     line_bot_api.push_message(uid, message)
+    elif re.match("今日", msg):
+        day = Ani_info.get_today()
+        ani_data = Ani_info.get_week_data(day[2])
+        inDB = []
+        for i in range(len(ani_data[0])):
+            inDB.append(Mongodb.find_ani(uid, ani_data[0][i]))
+        message = Msg_Ani.ani_week(day[2], ani_data, inDB)
+        line_bot_api.push_message(uid, message)
 
     # elif re.match("星期", msg):
     #     day = msg[2] 
