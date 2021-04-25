@@ -102,7 +102,7 @@ def handle_message(event):
         line_bot_api.push_message(uid, TextSendMessage(collect))
 
     elif re.match("取消" ,msg): 
-        collect = Mongodb.delete_ani(uid, msg[2:])
+        collect = Mongodb.delete_ani(uid, msg[4:])
         line_bot_api.push_message(uid, TextSendMessage(collect))
         
     #無法回應
