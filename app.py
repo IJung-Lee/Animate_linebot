@@ -106,10 +106,12 @@ def handle_message(event):
         line_bot_api.push_message(uid, TextSendMessage(collect))
 
     elif re.match("我的追番" ,msg): 
-        aaa = Mongodb.show_ani(uid)
-        line_bot_api.push_message(uid, TextSendMessage(str(aaa)))
-        # message = Msg_MyAni.my_ani(Mongodb.show_ani(uid))
-        # line_bot_api.push_message(uid, message)
+        mine = Mongodb.show_ani(uid)
+        if mine == "收藏空空如也！":
+            line_bot_api.push_message(uid, TextSendMessage("收藏空空如也！"))
+        else:
+            message = Msg_MyAni.my_ani(mine)
+            line_bot_api.push_message(uid, message)
         
     #無法回應
     else:
