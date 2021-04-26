@@ -27,7 +27,6 @@ def my_ani(Ani_list):
         alt_text = "My Animation",
         contents = {
             "type": "bubble",
-            "size": "kilo",
             "hero": {
                 "type": "image",
                 "url": "https://i.imgur.com/UpwzZpL.png",
