@@ -40,6 +40,7 @@ def my_ani(Ani_list):
                 "contents": contents,
                 "paddingAll": "lg"
             }
-        }
+        },
+        quick_reply = QuickReply(items=[QuickReplyButton(action=MessageAction(label = "清空收藏", text="清空收藏"))])
     )
     return flex_message

@@ -111,13 +111,15 @@ def handle_message(event):
             line_bot_api.push_message(uid, TextSendMessage("收藏空空如也！"))
         else:
             message = Msg_MyAni.my_ani(mine)
-            # message = Msg_MyAni.get_my_ani(mine)
-            # line_bot_api.push_message(uid, TextSendMessage(str(mine)))
             line_bot_api.push_message(uid, message)
+    
+    elif re.match("清空收藏" ,msg):
+        delete = Mongodb.delete_all_ani(uid)
+        line_bot_api.push_message(uid, TextSendMessage(delete))
         
     #無法回應
     else:
-        line_bot_api.push_message(uid, TextSendMessage('很抱歉アニ無法回應該訊息 \n\n輸入《時間》找尋每日番劇！ \n輸入《今日》探索今日番劇！ \n輸入《類別》查找各類番劇！ \n輸入《#動畫名》查看動畫資訊！'))
+        line_bot_api.push_message(uid, TextSendMessage('很抱歉アニ無法回應該訊息 \n\n輸入《時間》找尋每日番劇！ \n輸入《今日》探索今日番劇！ \n輸入《類別》查找各類番劇！ \n輸入《#動畫名》查看動畫資訊！ \n輸入《我的追番》查看收藏番劇！'))
 
 
 

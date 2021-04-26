@@ -35,6 +35,13 @@ def delete_ani(uid, name):
         collect.delete_one({"favorite_ani":name})
     return "收藏了就別拋棄我啦！"
 
+#刪除全部
+def delete_all_ani(uid):
+    db = constructor_ani()
+    collect = db[uid]
+    collect.delete_many({})
+    return "收藏空空如也！"
+
 #查詢動畫是否有收藏
 def find_ani(uid, name):     
     db = constructor_ani()
