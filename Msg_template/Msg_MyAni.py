@@ -11,9 +11,9 @@ def get_my_ani(AniName_list):
             "wrap": False,
             "margin": "sm",
             "action": {
-            "type": "message",
-            "label": "action",
-            "text": "#" + i
+                "type": "message",
+                "label": "action",
+                "text": "#" + i
             }
         }
         contents.append(collect)
