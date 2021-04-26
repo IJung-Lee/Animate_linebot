@@ -119,7 +119,7 @@ def handle_message(event):
         
     #無法回應
     else:
-        line_bot_api.push_message(uid, TextSendMessage('很抱歉アニ無法回應該訊息 \n\n輸入《時間》找尋每日番劇！ \n輸入《今日》探索今日番劇！ \n輸入《類別》查找各類番劇！ \n輸入《#動畫名》查看動畫資訊！ \n輸入《我的追番》查看收藏番劇！'))
+        line_bot_api.push_message(uid, TextSendMessage('很抱歉アニ君無法回應該訊息 \n\n輸入《時間》找尋每日番劇！ \n輸入《今日》探索今日番劇！ \n輸入《類別》查找各類番劇！ \n輸入《#動畫名》查詢動畫資訊！ \n輸入《我的追番》查看收藏番劇！'))
 
 
 

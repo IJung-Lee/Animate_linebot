@@ -40,7 +40,7 @@ def delete_all_ani(uid):
     db = constructor_ani()
     collect = db[uid]
     collect.delete_many({})
-    return "收藏空空如也！"
+    return "收藏清單已清空！"
 
 #查詢動畫是否有收藏
 def find_ani(uid, name):     
