@@ -9,7 +9,7 @@ This project is an animation linebot with Messaging API SDK deployed on Heroku a
 * Follow Animation
 
 ## Note
-* Heroku: Set the channel secret and channel access token for the Messaging API as an environment vars.
+* Heroku: Set the Channel Secret and Channel Access Token for the Messaging API as environment vars.
 * MongoDB: To connect to a MongoDB Atlas cluster, add the Atlas connection string to Heroku environment vars.
 
 ## Reference
