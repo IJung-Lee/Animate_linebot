@@ -19,6 +19,7 @@ def get_my_ani(AniName_list):
         contents.append(collect)
     return contents
 
+
 # 收藏清單
 def my_ani(Ani_list): 
     contents = get_my_ani(Ani_list)

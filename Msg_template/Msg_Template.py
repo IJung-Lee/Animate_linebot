@@ -3,7 +3,7 @@ from linebot.models import *
 # 星期選單
 def week_menu(): 
     flex_message = FlexSendMessage(
-        alt_text = "Week Menu",
+        alt_text = "Time Menu",
         contents = {
             "type": "bubble",
             "hero": {
@@ -124,7 +124,7 @@ def week_menu():
     return flex_message
 
 
-# 類別選單 ###圖片須改
+# 類別選單
 def category_menu(): 
     flex_message = FlexSendMessage(
             alt_text = "Category Menu",

@@ -16,6 +16,7 @@ def get_link_box(web, url):
         links.append(link)
     return links
 
+
 ##收藏判斷
 def ani_collect(collect , AniName):
     if collect == True:
