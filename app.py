@@ -110,10 +110,10 @@ def handle_message(event):
         if mine == "收藏空空如也！":
             line_bot_api.push_message(uid, TextSendMessage("收藏空空如也！"))
         else:
-            # message = Msg_MyAni.my_ani(mine)
+            message = Msg_MyAni.my_ani(mine)
             # message = Msg_MyAni.get_my_ani(mine)
-            line_bot_api.push_message(uid, TextSendMessage(str(mine)))
-            # line_bot_api.push_message(uid, message)
+            # line_bot_api.push_message(uid, TextSendMessage(str(mine)))
+            line_bot_api.push_message(uid, message)
         
     #無法回應
     else:

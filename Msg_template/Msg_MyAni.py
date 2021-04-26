@@ -3,7 +3,7 @@ from linebot.models import *
 ##收藏內容
 def get_my_ani(AniName_list):
     contents = []
-    for i in range(len(AniName_list)):
+    for i in AniName_list:
         collect = {
             "type": "text",
             "text": "⊛ " + i,
