@@ -9,7 +9,6 @@ aniDB='user_db'
 # DB  connection
 def constructor_ani():
     client = MongoClient(os.environ["MONGODB_URI"])
-    # client = MongoClient("mongodb+srv://myuser:love812118@anitest.ql5k4.mongodb.net/user_db?retryWrites=true&w=majority")
     db = client[aniDB]
     return db
 

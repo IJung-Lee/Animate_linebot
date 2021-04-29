@@ -46,7 +46,7 @@ def handle_message(event):
     profile = line_bot_api.get_profile(event.source.user_id)
     uid = profile.user_id # 發訊者ID
 
-    #動畫
+    # 動畫
     if re.match("#", msg):
         search_result = Ani_info.ani_search(msg[1:])
         if len(search_result) > 1:
