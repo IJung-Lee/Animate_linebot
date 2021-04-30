@@ -12,7 +12,7 @@ def constructor_ani():
     db = client[aniDB]
     return db
 
-#新增收藏
+# 新增收藏
 def insert_ani(uid, name):  
     db=constructor_ani()
     collect = db[uid]
@@ -25,7 +25,7 @@ def insert_ani(uid, name):
         else:
             return "追太多番啦！只能收藏10部哦！"
 
-#刪除收藏
+# 刪除收藏
 def delete_ani(uid, name):   
     db = constructor_ani()
     collect = db[uid]
@@ -34,14 +34,14 @@ def delete_ani(uid, name):
         collect.delete_one({"favorite_ani":name})
     return "收藏了就別拋棄我啦！"
 
-#刪除全部
+# 刪除全部
 def delete_all_ani(uid):
     db = constructor_ani()
     collect = db[uid]
     collect.delete_many({})
     return "收藏清單已清空！"
 
-#查詢動畫是否有收藏
+# 查詢動畫是否有收藏
 def find_ani(uid, name):     
     db = constructor_ani()
     collect = db[uid]
@@ -51,7 +51,7 @@ def find_ani(uid, name):
     else:
         return False
 
-#列出收藏清單
+# 列出收藏清單
 def show_ani(uid):
     MyAni = []
     db = constructor_ani()
