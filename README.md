@@ -1,9 +1,10 @@
 # Animation Linebot
 LineBot of Animation Information Written in Python.
-![image](https://github.com/IJung-Lee/Animation_linebot/blob/main/Animate.png)
 
 ## Introduction
 This project is an animation linebot with Messaging API SDK deployed on Heroku and uses MongoDB as a database.
+
+![image](https://github.com/IJung-Lee/Animation_linebot/blob/main/Animate.png)
 
 ### Function
 * Animation Search by Name, Time or Category
